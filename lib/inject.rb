@@ -8,4 +8,8 @@ class Array
     memo
   end
 
+  def sym_inject(sym)
+    (1..4).reduce(sym)
+  end
+
 end
