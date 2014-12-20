@@ -19,4 +19,8 @@ class Array
     memo
   end
 
+  def init_sym_inject(init, sym)
+    (1..4).reduce(init, sym)
+  end
+
 end
