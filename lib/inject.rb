@@ -12,4 +12,11 @@ class Array
     (1..4).reduce(sym)
   end
 
+  def init_inject(init)
+    copy = self.dup
+    memo = init
+    copy.each {|num| memo = yield(memo, num)}
+    memo
+  end
+
 end

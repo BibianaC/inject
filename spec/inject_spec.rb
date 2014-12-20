@@ -37,6 +37,27 @@ describe Array do
       expect([1, 2, 3, 4].inject(:*)).to eq 24
       expect([1, 2, 3, 4].sym_inject(:*)).to eq 24
     end
+
   end
+
+  context 'with an argument and a block' do
+
+    it "can sum numbers with an initial value" do
+      expect([1, 2, 3, 4].inject(10){|memo, item| memo + item}).to eq 20
+      expect([1, 2, 3, 4].init_inject(10){|memo, item| memo + item}).to eq 20
+    end
+
+    it "can minus numbers with an initial value" do
+      expect([1, 2, 3, 4].inject(10){|memo, item| memo - item}).to eq 0
+      expect([1, 2, 3, 4].init_inject(10){|memo, item| memo - item}).to eq 0
+    end
+
+    it "can mutiply numbers with an initial value" do
+      expect([1, 2, 3, 4].inject(10){|memo, item| memo * item}).to eq 240
+      expect([1, 2, 3, 4].init_inject(10){|memo, item| memo * item}).to eq 240
+    end
+
+  end
+
 
 end
