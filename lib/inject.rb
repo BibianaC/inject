@@ -9,7 +9,7 @@ class Array
   end
 
   def sym_inject(sym)
-    (1..4).reduce(sym)
+    (self).reduce(sym)
   end
 
   def init_inject(init)
@@ -20,7 +20,7 @@ class Array
   end
 
   def init_sym_inject(init, sym)
-    (1..4).reduce(init, sym)
+    (self).reduce(init, sym)
   end
 
 end
