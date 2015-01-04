@@ -1,6 +1,6 @@
 class Array
 
-  def my_inject(&block)
+  def block_inject(&block)
     copy = self.dup
     memo = self[0]
     copy.shift
@@ -21,6 +21,25 @@ class Array
 
   def init_sym_inject(init, sym)
     (self).reduce(init, sym)
+  end
+
+  def my_inject(*args, &block)
+    if args.length == 0
+      return block_inject(&block)
+    end
+
+    if args.length == 1 && args[0].class == Symbol
+      return sym_inject(args[0])
+    end
+
+    if args.length == 1 && args[0].class == Fixnum
+      return init_inject(args[0], &block)
+    end
+
+    if args.length == 2
+      return init_sym_inject(args[0], args[1])
+    end
+    raise "invalid invocation"
   end
 
 end
